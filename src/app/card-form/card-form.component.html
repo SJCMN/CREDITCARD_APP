@@ -1,0 +1,13 @@
+<form [formGroup]="cardForm">
+  
+    <input type="text" class="form-control" class="form-control" formControlName="name"/>
+    <div *ngIf="input.name">
+        Value is required!
+    </div>
+</form>
+
+
+<div>Form Contents: {{ cardForm.value | json }}</div>
+<div>Form is valid: {{ cardForm.valid }}</div>
+<div>Errors around name: {{ cardForm.controls.name.errors | json }}</div>
+<div>Errors around name: {{ cardForm.get('name') | json }}</div>
