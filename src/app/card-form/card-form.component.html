@@ -1,4 +1,5 @@
 <form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+
   <h2>Name</h2>
   <div class="field">
     <div class="control">
@@ -8,7 +9,9 @@
         type="text"
         class="form-control input"
         formControlName="name"
+        [ngClass]="{ 'is-danger' : showErrors() }"
       />
+    <p>Value: {{ cardForm.controls['name'].errors }}</p>
     </div>
 
     <div class="control">
@@ -18,9 +21,11 @@
         type="text"
         class="form-control input"
         formControlName="friendsName"
+        [ngClass]="{ 'is-danger' : showErrors() }"
       />
     </div>
   </div>
+
   <div formGroupName="address">
     <h2>Address</h2>
     <div class="field">
@@ -62,7 +67,17 @@
       />
     </div>
   </div>
-  <div>
+
+  <!-- <div formArrayName="aliases">
+    <h2>Aliases</h2>
+    <button type="button" (click)="addAlias()">+ Add another alias</button>
+    <div *ngFor="let alias of aliases.controls; let i = index">
+      <label for="alias-{{ i }}">Alias:</label>
+      <input id="alias-{{ i }}" type="text" [formControlName]="i">
+    </div>
+  </div> -->
+
+  <div >
     <p>Complete this form to submit</p>
     <button type="submit" [disabled]="!cardForm.valid">Submit</button>
     <button type="button" [disabled]="!cardForm.valid" (click)="updateCard()">
@@ -72,6 +87,7 @@
       Clear Names
     </button>
   </div>
+
 </form>
 
 <hr />
