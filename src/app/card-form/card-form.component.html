@@ -1,39 +1,79 @@
-<form 
-[formGroup]="cardForm"
-(ngSubmit)="onSubmit()"
->
-<h2>Name</h2>
-  <!-- <app-input [formControl]="cardForm.get('name')"></app-input> -->
-  <label for="name">Your Name:</label>
-  <input id="name" type="text" class="form-control" formControlName="name" />
+<form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+  <h2>Name</h2>
+  <div class="field">
+    <div class="control">
+      <label class="label" for="name">Your Name:</label>
+      <input
+        id="name"
+        type="text"
+        class="form-control input"
+        formControlName="name"
+      />
+    </div>
 
-  <label for="name">Your Friends Name:</label>
-  <input id="friends-name" type="text" class="form-control" formControlName="friendsName" />
-
-  
+    <div class="control">
+      <label class="label" for="name">Your Friends Name:</label>
+      <input
+        id="friends-name"
+        type="text"
+        class="form-control input"
+        formControlName="friendsName"
+      />
+    </div>
+  </div>
   <div formGroupName="address">
     <h2>Address</h2>
-
-    <label for="street">Street:</label>
-    <input id="street" type="text" class="form-control" formControlName="street" />
-
-    <label for="city">City:</label>
-    <input id="city" type="text" class="form-control" formControlName="city" />
-
-    <label for="state">State:</label>
-    <input id="state" type="text" class="form-control" formControlName="state" />
-
-    <label for="zip">Zip Code:</label>
-    <input id="zip" type="text" class="form-control" formControlName="zip" />
-
+    <div class="field">
+      <div class="control">
+        <label class="label" for="street">Street:</label>
+        <input
+          id="street"
+          type="text"
+          class="form-control input"
+          formControlName="street"
+        />
+      </div>
+      <div class="control">
+        <label class="label" for="city">City:</label>
+        <input
+          id="city"
+          type="text"
+          class="form-control input"
+          formControlName="city"
+        />
+      </div>
+      <div class="control">
+        <label class="label" for="state">State:</label>
+        <input
+          id="state"
+          type="text"
+          class="form-control input"
+          formControlName="state"
+        />
+      </div>
+    </div>
+    <div class="control">
+      <label class="label" for="zip">Zip Code:</label>
+      <input
+        id="zip"
+        type="text"
+        class="form-control input"
+        formControlName="zip"
+      />
+    </div>
   </div>
-
-  <p>Complete this form to submit</p>
-  <button type="submit" [disabled]="!cardForm.valid">Submit</button>
-  <button type="button" [disabled]="!cardForm.valid" (click)="updateCard()">Update Names</button>
-  <button type="button" [disabled]="!cardForm.valid" (click)="clearCard()">Clear Names</button>
-
+  <div>
+    <p>Complete this form to submit</p>
+    <button type="submit" [disabled]="!cardForm.valid">Submit</button>
+    <button type="button" [disabled]="!cardForm.valid" (click)="updateCard()">
+      Update Names
+    </button>
+    <button type="button" [disabled]="!cardForm.valid" (click)="clearCard()">
+      Clear Names
+    </button>
+  </div>
 </form>
+
 <hr />
 <div>Form Contents: {{ cardForm.value | json }}</div>
 <div>Form is valid: {{ cardForm.valid }}</div>
