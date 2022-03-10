@@ -11,7 +11,8 @@
         formControlName="name"
         [ngClass]="{ 'is-danger' : showErrors() }"
       />
-    <p>Value: {{ cardForm.controls['name'].errors }}</p>
+    <p>You have entered {{ cardForm.controls['name'].value.length }} characters
+    {{ cardForm.get('name')?.value.minlength }} characters are required.</p>
     </div>
 
     <div class="control">
@@ -76,22 +77,23 @@
       <input id="alias-{{ i }}" type="text" [formControlName]="i">
     </div>
   </div> -->
-
-  <div >
-    <p>Complete this form to submit</p>
-    <button type="submit" [disabled]="!cardForm.valid">Submit</button>
-    <button type="button" [disabled]="!cardForm.valid" (click)="updateCard()">
+  <p>Complete this form to submit</p>
+  <div class="buttons">
+    
+    <button class="button" type="submit" [disabled]="!cardForm.valid">Submit</button>
+    <button class="button" type="button" [disabled]="!cardForm.valid" (click)="updateCard()">
       Update Names
     </button>
-    <button type="button" [disabled]="!cardForm.valid" (click)="clearCard()">
+    <button class="button" type="button" [disabled]="!cardForm.valid" (click)="clearCard()">
       Clear Names
     </button>
   </div>
 
 </form>
-
+<!-- 
 <hr />
+
 <div>Form Contents: {{ cardForm.value | json }}</div>
 <div>Form is valid: {{ cardForm.valid }}</div>
 <div>Form status: {{ cardForm.status }}</div>
-<div>Error around name: {{ cardForm.controls["name"].errors | json }}</div>
+<div>Error around name: {{ cardForm.controls["name"].errors | json }}</div> -->
